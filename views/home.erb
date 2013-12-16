@@ -25,6 +25,9 @@
 				line-height: 80px;
 				display: inline-block;
 			}
+			.pad.pressed {
+				background-color: red;
+			}
 		</style>
 		
 	</head>
@@ -38,7 +41,7 @@
 			<div class="unit1of2 joystick center">
 				<h2>Tell me where to go !</h2>
 				<div class="unit1of1 center">
-					<div id="top" class="pad top" data-direction="up">
+					<div id="top" class="pad up" data-direction="up">
 						<span>UP</span>
 					</div>
 				</div>
@@ -61,10 +64,13 @@
 				var currentMove = null;
 				var moveTo = function(direction) {
 					currentMove = direction;
+					$('.pad').removeClass('pressed');
+					$('.pad.'+direction).addClass('pressed');
 					console.log('moving towards ' + direction);
 				}
 				var stop = function() {
 					currentMove = null;
+					$('.pad').removeClass('pressed');
 					console.log('stopping');
 				}
 				var arrowDown = function(direction) {
@@ -79,10 +85,6 @@
 				}
 				$(document).keydown(function(e) {
 					switch(e.which) {
-						case 37:
-						arrowDown('left');
-						break;
-
 						case 38:
 						arrowDown('up');
 						break;
@@ -90,7 +92,11 @@
 						case 39:
 						arrowDown('right');
 						break;
-
+						
+						case 37:
+						arrowDown('left');
+						break;
+						
 						case 40:
 						arrowDown('back');
 						break;
