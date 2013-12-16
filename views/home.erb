@@ -1,0 +1,127 @@
+<html>
+	<head>
+		<script src="/jquery.min.js"></script>
+		<style>
+			.center {
+				text-align: center;
+			}
+			.unit1of1 {
+				width: 100%;
+				display: block;
+			}
+			.unit1of2 {
+				display: inline-block;
+				width: 49%;
+			}
+			.unit1of3 {
+				display: inline-block;
+				width: 33%;
+			}
+			.pad {
+				height: 80px;
+				width: 80px;
+				background-color: green;
+				text-align: center;	
+				line-height: 80px;
+				display: inline-block;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<h1>Hello kiddo, I'm your robot, come out and play :)</h1>
+		<div class="unit1of1">
+			<div class="unit1of2">
+				<h2>See through my eyes</h2>
+				<img src="" alt="robot webcam feed">
+			</div>
+			<div class="unit1of2 joystick center">
+				<h2>Tell me where to go !</h2>
+				<div class="unit1of1 center">
+					<div id="top" class="pad top" data-direction="up">
+						<span>UP</span>
+					</div>
+				</div>
+				<% %w(left right).each do |dir| %>
+					<div class="unit1of2 center">
+						<div id="<%=dir%>" class="pad <%=dir%>" data-direction="<%=dir%>">
+							<span><%=dir.capitalize%></span>
+						</div>
+					</div>
+				<% end %>
+				<div class="unit1of1 center">
+					<div id="back" class="pad back" data-direction="back">
+						<span>BACK</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(function() {
+				var currentMove = null;
+				var moveTo = function(direction) {
+					currentMove = direction;
+					console.log('moving towards ' + direction);
+				}
+				var stop = function() {
+					currentMove = null;
+					console.log('stopping');
+				}
+				var arrowDown = function(direction) {
+					if (currentMove != direction) {
+							moveTo(direction);
+						}
+				}
+				var arrowUp = function(direction) {
+					if (currentMove == direction) {
+							stop();
+						}
+				}
+				$(document).keydown(function(e) {
+					switch(e.which) {
+						case 37:
+						arrowDown('left');
+						break;
+
+						case 38:
+						arrowDown('up');
+						break;
+
+						case 39:
+						arrowDown('right');
+						break;
+
+						case 40:
+						arrowDown('back');
+						break;
+
+						default: return; // exit this handler for other keys
+					}
+					e.preventDefault(); // prevent the default action (scroll / move caret)
+				});
+				$(document).keyup(function(e) {
+					switch(e.which) {
+						case 37:
+						arrowUp('left');
+						break;
+
+						case 38:
+						arrowUp('up');
+						break;
+
+						case 39:
+						arrowUp('right');
+						break;
+
+						case 40:
+						arrowUp('back');
+						break;
+
+						default: return; // exit this handler for other keys
+					}
+					e.preventDefault(); // prevent the default action (scroll / move caret)
+				});
+			});
+		</script>
+	</body>
+</html>
