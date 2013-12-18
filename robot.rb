@@ -1,26 +1,28 @@
 class Robot
   def move_forward
-    puts 'robot moving foward'
-    true
+    stub_robot 'moving foward'
   end
 
   def move_back
-    puts 'robot moving back'
-    true
+    stub_robot 'moving back'
   end
 
   def move_right
-    puts 'robot moving right'
-    true
+    stub_robot 'moving right'
   end
 
   def move_left
-    puts 'robot moving left'
-    true
+    stub_robot 'moving left'
   end
 
   def stop_moving
-    puts 'robot stopped'
+    stub_robot 'stopped'
+  end
+
+private 
+  def stub_robot output
+    puts "stubbing robot #{output}"
     true
   end
+  
 end
