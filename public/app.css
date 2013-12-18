@@ -1,0 +1,33 @@
+.center {
+	text-align: center;
+}
+.unit1of1 {
+	width: 100%;
+	display: block;
+}
+.unit1of2 {
+	display: inline-table;
+	width: 49%;
+}
+.unit1of3 {
+	display: inline-table;
+	width: 33%;
+}
+.pad {
+	height: 100px;
+	width: 100px;
+	background-color: green;
+	text-align: center;	
+	line-height: 100px;
+	display: inline-block;
+}
+.pad.pressed {
+	background-color: red;
+}
+.videoFeed {
+	width: 100%;
+	}
+.mtm {margin-top: 10px;}
+.mtl {margin-top: 20px;}
+.speachBox {width: 80%;}
+.speachButn {padding: 5px;}

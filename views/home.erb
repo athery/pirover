@@ -1,51 +1,21 @@
 <html>
 	<head>
+		<link rel="stylesheet" href="/app.css">
 		<script src="/jquery.min.js"></script>
-		<style>
-			.center {
-				text-align: center;
-			}
-			.unit1of1 {
-				width: 100%;
-				display: block;
-			}
-			.unit1of2 {
-				display: inline-table;
-				width: 49%;
-			}
-			.unit1of3 {
-				display: inline-table;
-				width: 33%;
-			}
-			.pad {
-				height: 80px;
-				width: 80px;
-				background-color: green;
-				text-align: center;	
-				line-height: 80px;
-				display: inline-block;
-			}
-			.pad.pressed {
-				background-color: red;
-			}
-			.videoFeed {
-				width: 100%;
-				}
-		</style>
-		
+		<script src="/app.js"></script>
 	</head>
-	<body>
+	<body class="center">
 		<h1>Hello kiddo, I'm your robot, come out and play :)</h1>
 		<div class="unit1of1">
-			<div class="unit1of2">
+			<div class="unit1of2 center">
 				<h2>See through my eyes</h2>
 				<img src="/video.png" alt="robot webcam feed" class="videoFeed">
 			</div>
 			<div class="unit1of2 joystick center">
 				<h2>Tell me where to go !</h2>
 				<div class="unit1of1 center">
-					<div id="top" class="pad up" data-direction="up">
-						<span>UP</span>
+					<div id="forward" class="pad forward" data-direction="forward">
+						<span>FORWARD</span>
 					</div>
 				</div>
 				<% %w(left right).each do |dir| %>
@@ -62,75 +32,12 @@
 				</div>
 			</div>
 		</div>
-		<script>
-			$(function() {
-				var currentMove = null;
-				var moveTo = function(direction) {
-					currentMove = direction;
-					$('.pad').removeClass('pressed');
-					$('.pad.'+direction).addClass('pressed');
-					console.log('moving towards ' + direction);
-				}
-				var stop = function() {
-					currentMove = null;
-					$('.pad').removeClass('pressed');
-					console.log('stopping');
-				}
-				var arrowDown = function(direction) {
-					if (currentMove != direction) {
-							moveTo(direction);
-						}
-				}
-				var arrowUp = function(direction) {
-					if (currentMove == direction) {
-							stop();
-						}
-				}
-				$(document).keydown(function(e) {
-					switch(e.which) {
-						case 38:
-						arrowDown('up');
-						break;
-
-						case 39:
-						arrowDown('right');
-						break;
-						
-						case 37:
-						arrowDown('left');
-						break;
-						
-						case 40:
-						arrowDown('back');
-						break;
-
-						default: return; // exit this handler for other keys
-					}
-					e.preventDefault(); // prevent the default action (scroll / move caret)
-				});
-				$(document).keyup(function(e) {
-					switch(e.which) {
-						case 37:
-						arrowUp('left');
-						break;
-
-						case 38:
-						arrowUp('up');
-						break;
-
-						case 39:
-						arrowUp('right');
-						break;
-
-						case 40:
-						arrowUp('back');
-						break;
-
-						default: return; // exit this handler for other keys
-					}
-					e.preventDefault(); // prevent the default action (scroll / move caret)
-				});
-			});
-		</script>
+		<div class="unit1of1 mtm center">
+			<h2>Make me talk !</h2>
+			<form>
+				<textarea id="speachBox" name="speachbox" class="speachBox" placeholder="type something, I'll say it !"></textarea><br />
+				<input type="submit" class="speachButn">
+			</form>
+		</div>
 	</body>
 </html>
