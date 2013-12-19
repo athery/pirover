@@ -1,5 +1,6 @@
 class PiMotor
   attr_accessor :forward_pin, :back_pin
+  
   def  initialize pins
   	@forward_pin = PiPiper::Pin.new(pin: pins[0], direction: :out) 
   	@back_pin    = PiPiper::Pin.new(pin: pins[1], direction: :out)
@@ -22,10 +23,13 @@ class PiMotor
 end
 
 
-# stubbed version, simply writing to the console for debug purposes on a non RPi PC
 
 class StubbedMotor
+# stubbed version used for running on a non RPi PC : 
+# writes to the logs instead of using the actual RPi GPIO
+
   attr_accessor :forward_pin, :back_pin
+
   def  initialize pins
   	@forward_pin = "pin #{pins[0]}"
   	@back_pin    = "pin #{pins[1]}"

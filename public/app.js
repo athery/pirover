@@ -1,34 +1,32 @@
 $(function() {
 	var currentMove = null;
-	var moveTo = function(direction) {
+	moveTo = function(direction) {
 		currentMove = direction;
 		$('.pad').removeClass('pressed');
 		$.ajax('/move/' + direction)
 			.done(function() {
 				$('.pad.'+direction).addClass('pressed');
-				console.log('moving ' + direction);
 			})
 			.fail(function() {
 				console.log('error trying to move ' + direction);
 			});
 	}
-	var stop = function() {
+	stop = function() {
 		currentMove = null;
 		$.ajax('/stop')
 			.done(function() {
 				$('.pad').removeClass('pressed');
-				console.log('robot stopped ');
 			})
 			.fail(function() {
 				console.log('error trying to stop ');
 			});
 	}
-	var arrowDown = function(direction) {
+	arrowDown = function(direction) {
 		if (currentMove != direction) {
 				moveTo(direction);
 			}
 	}
-	var arrowUp = function(direction) {
+	arrowUp = function(direction) {
 		if (currentMove == direction) {
 				stop();
 			}
