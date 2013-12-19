@@ -3,7 +3,10 @@ require 'robot'
 
 set :bind, '0.0.0.0'
 
-robot = Robot.new
+#GPIO pins numbers for left and right motors : first elt in the array is forward, second is back
+pins  = { right: [4, 5], left: [6, 7] } 
+
+robot = Robot.new pins, :stubbed
 
 get '/' do
   erb :home
