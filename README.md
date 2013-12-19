@@ -19,7 +19,7 @@ The robot can be instantiated in stubbed mode when not running on a RPi.That mea
 - drive like a crazy and chase the cat in the living room :)
 - Add text to speach and a mall amp and 8ohm speaker to have it say things typed on the web interface
 
-#Install
+##Install
 Warning - never done yet, but it should go like this:
 - install ruby
 - clone thsi project
