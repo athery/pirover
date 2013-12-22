@@ -32,4 +32,7 @@ get '/stop' do
   'stopped'
 end
 
-
+get '/speak' do
+  robot.speak(params[:text])
+  'speach over'
+end

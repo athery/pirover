@@ -89,4 +89,15 @@ $(function() {
 		arrowUp($(this).attr('data-direction'));
 		e.preventDefault();
 		});
+
+	$('#speachZone').on('click', '#speachButn', function(e){
+		$.ajax('/speak', {data: {text: $('#speachBox').val()}})
+			.done(function() {
+				$('#speachBox').val('');
+			})
+			.fail(function() {
+				console.log('error trying to speak ');
+			});
+		e.preventDefault();
+	});
 });
