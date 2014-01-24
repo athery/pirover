@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'robot'
+require 'robot/robot'
 require 'socket'
 
 set :bind, '0.0.0.0'

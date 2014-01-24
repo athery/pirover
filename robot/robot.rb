@@ -1,4 +1,4 @@
-require 'motor'
+require 'robot/motor'
 require 'open-uri'
 
 class Robot
