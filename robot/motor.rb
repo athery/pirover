@@ -1,3 +1,5 @@
+require 'pi_piper'
+
 class PiMotor
   attr_accessor :forward_pin, :back_pin
   
